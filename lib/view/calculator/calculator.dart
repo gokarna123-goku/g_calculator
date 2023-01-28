@@ -35,7 +35,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                   BoxShadow(
                     offset: Offset(0, 3),
                     blurRadius: 1.0,
-                    color: Colors.grey.shade800, // background color
+                    color: Colors.grey.shade800,
                   ),
                 ],
               ),
@@ -43,7 +43,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    padding: EdgeInsets.all(20.0),
+                    padding: EdgeInsets.all(19.0),
                     alignment: Alignment.centerRight,
                     child: Text(
                       userInput,
