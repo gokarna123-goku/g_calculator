@@ -13,26 +13,11 @@ class _CalculatorPageState extends State<CalculatorPage> {
   String result = '0';
 
   List<String> buttonList = [
-    'AC',
-    '(',
-    ')',
-    '/',
-    '7',
-    '8',
-    '9',
-    '*',
-    '4',
-    '5',
-    '6',
-    '+',
-    '1',
-    '2',
-    '3',
-    '-',
-    'C',
-    '0',
-    '.',
-    '=',
+    'AC', '(', ')', '/',
+    '7', '8', '9', '*',
+    '4', '5', '6', '+',
+    '1', '2', '3', '-',
+    'C', '0',  '.', '=',
   ];
   @override
   Widget build(BuildContext context) {
@@ -48,27 +33,10 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 borderRadius: BorderRadius.circular(0),
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromRGBO(8, 56, 73, 0.5), // shadow color
+                    offset: Offset(0, 3),
+                    blurRadius: 1.0,
+                    color: Colors.grey.shade800, // background color
                   ),
-                  BoxShadow(
-                    offset: Offset(0, 4),
-                    blurRadius: 6,
-                    color: Color(0xFFF9F8F9), // background color
-                  ),
-                  //   // BoxShadow(
-                  //   //   blurStyle: BlurStyle.inner,
-                  //   //   color: Colors.grey.shade800,
-                  //   //   blurRadius: 5.0,
-                  //   //   spreadRadius: 0.5,
-                  //   //   offset: Offset(4, 4),
-                  //   // ),
-                  //   // BoxShadow(
-                  //   //   blurStyle: BlurStyle.inner,
-                  //   //   color: Colors.black87,
-                  //   //   blurRadius: 5.0,
-                  //   //   spreadRadius: 0.5,
-                  //   //   offset: Offset(4.0, 4.0),
-                  //   // ),
                 ],
               ),
               child: Column(
