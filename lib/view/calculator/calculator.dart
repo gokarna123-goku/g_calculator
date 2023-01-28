@@ -9,8 +9,8 @@ class CalculatorPage extends StatefulWidget {
 }
 
 class _CalculatorPageState extends State<CalculatorPage> {
-  String userInput = '';
-  String result = '0';
+  String userInput = "";
+  String result = "";
 
   List<String> buttonList = [
     'AC', '(', ')', '/',
