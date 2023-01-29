@@ -128,12 +128,12 @@ class _GlassmorphismCalculatorPageState
           handleButton(text);
         });
       },
-      onLongPress: (){
-        setState(() {
-          inputData = longPressText;
-          return;
-        });
-      },
+      // onLongPress: (){
+      //   setState(() {
+      //     inputData = longPressText;
+      //     return;
+      //   });
+      // },
       // onDoubleTap: (){
       //   setState(() {
       //     inputData = longPressText;
@@ -156,8 +156,8 @@ class _GlassmorphismCalculatorPageState
           // stops: [0.3, 1],
         ),
         borderGradient: LinearGradient(
-          begin: Alignment.bottomRight,
-          end: Alignment.topLeft,
+          // begin: Alignment.bottomRight,
+          // end: Alignment.topLeft,
           colors: [
             primaryTextColor,
             Color(0xFFFFFFF),

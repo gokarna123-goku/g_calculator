@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:calculator/view/neumorphism_calculator/n_calculator.dart';
+// import 'package:calculator/view/neumorphism_calculator/n_calculator.dart';
 import 'package:calculator/view/glassmorphism_calculator/g_calculator.dart';
 
 void main() {
