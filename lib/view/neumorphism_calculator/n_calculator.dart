@@ -2,14 +2,14 @@ import 'package:calculator/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
-class CalculatorPage extends StatefulWidget {
-  const CalculatorPage({super.key});
+class NeumorphismCalculatorPage extends StatefulWidget {
+  const NeumorphismCalculatorPage({super.key});
 
   @override
-  State<CalculatorPage> createState() => _CalculatorPageState();
+  State<NeumorphismCalculatorPage> createState() => _NeumorphismCalculatorPageState();
 }
 
-class _CalculatorPageState extends State<CalculatorPage> {
+class _NeumorphismCalculatorPageState extends State<NeumorphismCalculatorPage> {
   String inputData = "";
   String result = "0";
 
