@@ -1,3 +1,4 @@
+import 'package:calculator/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
@@ -9,10 +10,10 @@ class CalculatorPage extends StatefulWidget {
 }
 
 class _CalculatorPageState extends State<CalculatorPage> {
-  String userInput = "";
-  String result = "";
+  String inputData = "";
+  String result = "0";
 
-  List<String> buttonList = [
+  List<String> buttonLists = [
     'AC', '(', ')', '/',
     '7', '8', '9', '*',
     '4', '5', '6', '+',
@@ -22,7 +23,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1d2630),
+      backgroundColor: background,
       body: SafeArea(
         child: Column(
           children: [
@@ -46,7 +47,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     padding: EdgeInsets.all(19.0),
                     alignment: Alignment.centerRight,
                     child: Text(
-                      userInput,
+                      inputData,
                       style: TextStyle(fontSize: 32.0, color: Colors.white),
                     ),
                   ),
@@ -69,14 +70,14 @@ class _CalculatorPageState extends State<CalculatorPage> {
               child: Container(
                 padding: EdgeInsets.all(10.0),
                 child: GridView.builder(
-                  itemCount: buttonList.length,
+                  itemCount: buttonLists.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
                     crossAxisSpacing: 25.0,
                     mainAxisSpacing: 25.0,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    return CustomButton(buttonList[index]);
+                    return CustomButton(buttonLists[index]);
                   },
                 ),
               ),
@@ -89,7 +90,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
 
   Widget CustomButton(String text) {
     return InkWell(
-      splashColor: Color(0xFF1d2630),
+      splashColor: background,
       onTap: () {
         setState(() {
           handleButton(text);
@@ -97,17 +98,17 @@ class _CalculatorPageState extends State<CalculatorPage> {
       },
       child: Ink(
         decoration: BoxDecoration(
-          color: getBGColor(text),
+          color: getBtnBgColor(text),
           borderRadius: BorderRadius.circular(6.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.shade800,
+              color: lightShadowBgColor,
               blurRadius: 5.5,
               spreadRadius: 0.5,
               offset: Offset(-4.0, -4.0),
             ),
             BoxShadow(
-              color: Colors.black87,
+              color: darkShadowBgColor,
               blurRadius: 5.5,
               spreadRadius: 0.5,
               offset: Offset(6.0, 6.0),
@@ -118,7 +119,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
           child: Text(
             text,
             style: TextStyle(
-                color: getColor(text),
+                color: getTextColor(text),
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold),
           ),
@@ -127,7 +128,8 @@ class _CalculatorPageState extends State<CalculatorPage> {
     );
   }
 
-  getColor(String text) {
+// Define Color for text 
+  getTextColor(String text) {
     if (text == '/' ||
         text == '*' ||
         text == '+' ||
@@ -136,44 +138,45 @@ class _CalculatorPageState extends State<CalculatorPage> {
         text == '(' ||
         text == ')') {
       // return Color(0xFFFC6464);
-      return Color(0xFF6478FC);
+      return mathExpTextColor;
     }
     if(text == "AC" || text == "="){
-      return Color(0xFF1d2630);
+      return secondaryTextColor;
     }
-    return Colors.white;
+    return primaryTextColor;
   }
 
-  getBGColor(String text) {
+// Define color for button background
+  getBtnBgColor(String text) {
     if (text == 'AC') {
-      return Color(0xFF6478FC);
+      return mathExpBtnBgColor;
     }
     if (text == '=') {
-      return Color(0xFFC85D36);
+      return ressultBtnBgColor;
     }
-    return Color(0xFF1d2630);
+    return secondaryTextColor;
   }
 
+// Handle if user click on the buttons
   handleButton(String text) {
     if (text == "AC") {
-      userInput = "";
+      inputData = "";
       result = "0";
       return;
     }
     if (text == "C") {
-      if (userInput.isNotEmpty) {
-        userInput = userInput.substring(0, userInput.length - 1);
+      if (inputData.isNotEmpty) {
+        inputData = inputData.substring(0, inputData.length - 1);
         return;
       } else {
         return null;
       }
     }
-
     if (text == "=") {
       result = calculate();
-      userInput = result;
-      if (userInput.endsWith(".0")) {
-        userInput = userInput.replaceAll(".0", "");
+      inputData = result;
+      if (inputData.endsWith(".0")) {
+        inputData = inputData.replaceAll(".0", "");
         return;
       }
       if (result.endsWith(".0")) {
@@ -181,17 +184,18 @@ class _CalculatorPageState extends State<CalculatorPage> {
         return;
       }
     }
-
-    userInput = userInput + text;
+    inputData = inputData + text;
   }
 
+// Evaluate tha perfect result according to user input
   String calculate() {
     try {
-      var exp = Parser().parse(userInput);
+      var exp = Parser().parse(inputData);
       var evaluation = exp.evaluate(EvaluationType.REAL, ContextModel());
       return evaluation.toString();
     } catch (e) {
-      return "error";
+      return "error!";
     }
   }
+  // 
 }
