@@ -99,7 +99,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
       child: Ink(
         decoration: BoxDecoration(
           color: getBtnBgColor(text),
-          borderRadius: BorderRadius.circular(6.0),
+          borderRadius: BorderRadius.circular(7.0),
           boxShadow: [
             BoxShadow(
               color: lightShadowBgColor,
